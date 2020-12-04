@@ -1,11 +1,21 @@
-# LSD
+# LSD 
+### Introduction 
 Documentation tool for metainformation, developed to fulfill certain transportation norms
 
 LSD stands for Luetze Software Delievery. It was build with the python based Webframework Django. 
 The LSD consists of different apps, which change the functionality. 
 Apps can be activated and deactivated. 
 
-### The following apps are already implemented: 
+### Usage of the LSD
+We use the LSD as a filling system. Through the Web and RestApi Interface integrated in the LSD, our internal Buildtool saves information of software in the LSD. 
+
+### How can you contribute? 
+We welcome contributors, please inform yourself about our [code of conduct](https://github.com/praktianerJones/LSD/blob/main/CODE_OF_CONDUCT.md) .
+
+This Repo is especially interessting for people and companies who wants to develop a continous integration system used by companies who have to fulfill certain norms. 
+When you want to get started please have a look on our (how to install)[https://github.com/praktianerJones/LSD/blob/main/How_To_Install.md] for more information about the LSD, please visit our wiki. 
+
+### What Apps are implemented in the LSD?
 
 1. LSD-App
 
@@ -52,6 +62,10 @@ administration of the system, which is provided by Django. Django’s administra
    permissions, they can upload a new license. Due to legal issues a license must be accepted through a user in the User-Group “Lawyer”. The modules section and paragraph are 
    implemented for fur-ther usage.  
 
-##Installation
-Clone this repo wherever you want your tools to be. 
 
+### About the Company
+The LSD is developed and maintained through the Friedrich Lütze GmbH. The Friedrich Lütze GmbH works in the fields transportation and automation, with the specifications cable, cabinet, connectivity and control. 
+[Please visit our Website for more information about the Friedrich Lütze GmbH.](https://www.luetze.com/de-de/)
+
+### License
+The LSD through the 3-Clause-BSD, a copy of this license is provided in this Repo. 
