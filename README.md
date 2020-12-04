@@ -63,7 +63,7 @@ administration of the system, which is provided by Django. Django’s administra
    implemented for fur-ther usage.  
 
 
-### About the Company
+### About the company behind the LSD
 The LSD is developed and maintained through the Friedrich Lütze GmbH. The Friedrich Lütze GmbH works in the fields transportation and automation, with the specifications cable, cabinet, connectivity and control. 
 [Please visit our Website for more information about the Friedrich Lütze GmbH.](https://www.luetze.com/de-de/)
 
