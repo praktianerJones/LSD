@@ -12,4 +12,4 @@ For the development of the LSD the following third-party software must be instal
 |Json|Unknown|Lightweight data-interchange format|
 |Python|3.6.9|Programming language|
 
-Afterwards just clone the repo and develop it in a IDE of your choice, we are using VS Code.
+Afterwards just clone the repo and develop it in an IDE of your choice, we are using VS Code.
