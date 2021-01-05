@@ -12,6 +12,6 @@ Please note we have a [code of conduct](https://github.com/praktianerJones/LSD/b
 3. Increase the version numbers in any examples files and the README.md to the new version that this Pull Request would represent. The versioning scheme we use is [SemVer](https://semver.org/).
 4. Please set a pull request to a maintainer, once they acknowledged the request they will merge it.
 
-#FAQ
+### FAQ
 
 Frequently asked questions: 
