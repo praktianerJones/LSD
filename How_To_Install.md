@@ -12,4 +12,32 @@ For the development of the LSD the following third-party software must be instal
 |Json|Unknown|Lightweight data-interchange format|
 |Python|3.6.9|Programming language|
 
-Afterwards just clone the repo and develop it in an IDE of your choice, we are using VS Code.
+To make the installation easier, we included a requirments file in our repo, so just hit:
+```
+pip-compile
+pip-sync
+```
+to install the required packages. 
+
+
+### credentials
+The passwords and the django secret key are held by a json file outside of this repository.
+The file needs to be in the same directory as the repository.
+The filename has to be ``config.json``
+The file has to provide these variables:
+```
+{
+    "lsd_secret_key": "<django secret key - used for security features>",
+    "lsd_dbpass": "<password of the db or "" in case of internal sqlite db>",
+    "lsd_ldappass": "<password of the user>",
+    "lsd_testserver": true/false, (optional - true: django uses an internal sqlite db - for test/develop purpose)
+    "lsd_debug": true/false (optional - if not set it will be set through the lsd_testserver)
+}
+```
+
+If this file is not found the LSD defaults to testserver state without LDAP
+access and uses the internal sqlite dummy database.
+
+For more information check the readme.md in the repository folder LSD. 
+
+
