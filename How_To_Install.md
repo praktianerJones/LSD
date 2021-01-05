@@ -11,3 +11,5 @@ For the development of the LSD the following third-party software must be instal
 |Crispy_forms|1.8.1|Helps to format templates|
 |Json|Unknown|Lightweight data-interchange format|
 |Python|3.6.9|Programming language|
+
+Afterwards just clone the repo and develop it in a IDE of your choice, we are using VS Code.
