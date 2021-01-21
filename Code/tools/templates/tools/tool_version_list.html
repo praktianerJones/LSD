@@ -1,0 +1,27 @@
+<!--SPDX-License-Identifier: BSD-3-Clause-->
+<!--
+tool_version_list.html
+
+(C) Copyright 2020 Friedrich Luetze GmbH, S. Hentges, J. Luelsdorf <lsd@luetze.de>
+-->
+{% extends "lsd/base.html" %}
+{% block content %}
+    {% for tool in tools %}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="{% url 'tool-details' tool tool.version %}">{{ tool }}</a>
+              <small class="text-muted">{{ tool.date_posted|date:"Y-m-d" }} {{ tool.date_posted|time:"H:i" }}</small>
+            </div>
+            <p>Version: {{ tool.version }} </p> 
+            <p>Classification: {{tool.get_classification_display}}</p>
+            <p>SIL-Level: {{tool.get_release_status_display}}</p>
+            {% if tool.usage_status == 'l' %}
+              <p align="right" style="color:#FF0000">Status: {{ tool.get_usage_status_display }}</p>
+            {% elif tool.usage_status == 'a' %}
+              <p align="right" style="color:#00FF00">Status: {{ tool.get_usage_status_display }}</p>
+            {% endif %}
+          </div>
+        </article>
+    {% endfor %}
+{% endblock content %}

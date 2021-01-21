@@ -1,0 +1,26 @@
+<!--SPDX-License-Identifier: BSD-3-Clause-->
+<!--
+paragraph_detail.html
+
+(C) Copyright 2020 Friedrich Luetze GmbH, J. Luelsdorf <lsd@luetze.de>
+-->
+{% extends "lsd/base.html"%}
+{% block content %}
+    <article class = "media content-section">
+        <div class="media-body">
+            <div class="article-metadata">
+                <h2>Paragraph</h2>
+            </div>
+            <table class="table table-striped">
+                <tr>
+                    <th scope="row">Permission Level</th>
+                    <td>{{ paragraph.permission_level }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Paragraph Text</th>
+                    <td>{{ paragraph.paragraph_text}}</td>                    
+                </tr>
+            </table>             
+        </div>
+    </article>
+{% endblock content %}

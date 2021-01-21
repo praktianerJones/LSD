@@ -1,0 +1,14 @@
+<!--SPDX-License-Identifier: BSD-3-Clause-->
+<!--
+list_branches.html
+
+(C) Copyright 2020 Friedrich Luetze GmbH, S. Strobel, J. Luelsdorf <lsd@luetze.de>
+-->
+{% extends "lsd/base.html" %}
+{% block content %}
+    {% for branch in branches %}
+        <article class="media content-section">
+            <a href="{% url 'lsd-va-branch-type' branch %}">{{ branch }}</a>
+        </article>
+    {% endfor %}
+{% endblock content %}

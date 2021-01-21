@@ -1,0 +1,56 @@
+<!--SPDX-License-Identifier: BSD-3-Clause-->
+<!--
+product_details.html
+
+(C) Copyright 2020 Friedrich Luetze GmbH, S. Hentges, J. Luelsdorf <lsd@luetze.de>
+-->
+{% extends "lsd/base.html" %}
+{% block content %}
+  <article class="media content-section">
+    <div class="media-body">
+      {% for product in products %}
+        <div class="article-metadata">
+          <h2>{{ product.article_number }} - Revision: {{ product.article_revision }}</h2>
+        </div>
+        <table class="table table-striped">
+          <tr>
+            <th scope="row">Artikel Name:</th>
+            <td>{{ product.title }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Beschreibung:</th>
+            <td>{{ product.article_description }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Revision:</th>
+            <td>{{ product.article_revision }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Datum:</th>
+            <td>{{ product.date_posted|date:"Y-m-d" }} {{ product.date_posted|time:"H:i" }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Bemerkungen:</th>
+            <td>{{ product.content }}</td>
+          </tr>
+          <tr>
+            <th scope="row">Produktfamilien:</th>
+              <td>
+                {% for family in product.families.all %}
+                  {{ family }}</br>
+                {% endfor %}
+              </td>
+          </tr>
+          <tr>
+            <th scope="row">Eingesetzte Releases:</th>
+              <td>
+                {% for release in product.linked_software.all %}
+                  <a class="mr-2" href="{% url 'software-detail-version' release.title release.version_string %}">{{ release.title }} - {{ release.version_string }}</a></br>
+                {% endfor %}
+              </td>
+          </tr>
+        </table>
+      {% endfor %}
+    </div>
+  </article>
+{% endblock content %}

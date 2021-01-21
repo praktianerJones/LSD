@@ -1,0 +1,19 @@
+<!--SPDX-License-Identifier: BSD-3-Clause-->
+<!--
+software_list.html
+
+(C) Copyright 2020 Friedrich Luetze GmbH, S. Strobel, S. Hentges, J. Luelsdorf <lsd@luetze.de>
+
+-->
+{% extends "lsd/base.html" %}
+{% block content %}
+    {% for software in softwares %}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="{% url 'software-detail' software %}">{{ software }}</a>
+            </div>
+          </div>
+        </article>
+    {% endfor %}
+{% endblock content %}

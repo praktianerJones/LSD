@@ -1,0 +1,23 @@
+<!--SPDX-License-Identifier: BSD-3-Clause-->
+<!--
+home.html
+
+(C) Copyright 2020 Friedrich Luetze GmbH, S. Strobel, J. Luelsdorf <lsd@luetze.de>
+-->
+{% extends "lsd/base.html" %}
+{% block content %}
+    {% for release in releases %}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="{% url 'software-detail' release.title %}">{{ release.title }}</a>
+              <small class="text-muted">{{ release.date|date:"Y-m-d" }} {{ release.date|time:"H:i" }}</small>
+            </div>
+            <h2><a class="article-title" href="{% url 'software-detail-version' software_name=release.title software_version=release.version_string %}">{{ release.version_string }}</a></h2>
+            <a href="{% url 'lsd-home' %}{{ release.bin_path }}">download Software</a>
+            <a href="{% url 'lsd-home' %}{{ release.doc_path_html }}">show doc</a>
+            <p align="right">Status: {{ release.get_status_display }}</p>
+          </div>
+        </article>
+    {% endfor %}
+{% endblock content %}

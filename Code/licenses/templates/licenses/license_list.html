@@ -1,0 +1,82 @@
+<!--SPDX-License-Identifier: BSD-3-Clause-->
+<!--
+license_list.html
+
+(C) Copyright 2020 Friedrich Luetze GmbH, J. Luelsdorf <lsd@luetze.de>
+-->
+<style>
+  .dotgreen {
+    height: 25px;
+    width: 25px;
+    background-color: #0E0;
+    border-radius: 50%;
+    display: inline-block;
+  }
+</style>
+<style>
+  .dotyellow {
+    height: 25px;
+    width: 25px;
+    background-color: rgba(241, 206, 8, 0.808);
+    border-radius: 50%;
+    display: inline-block;
+  }
+</style>
+
+<style>
+  .dotred {
+    height: 25px;
+    width: 25px;
+    background-color: #E00;
+    border-radius: 50%;
+    display: inline-block;
+  }
+</style>
+
+{% extends "lsd/base.html" %}
+{% block content %}
+{%if user.is_authenticated%}
+ <h6>Make a new license</h6>
+    <a href="add">Add a new license</a>
+{%endif%}
+
+  <form class="example" action="/licenses">
+    <fieldset>
+      <label> Choose permission Levels: </label>
+      <label>
+        <input  type="radio" name="permission_level" value="RED">
+        <span class="dotred"></span>
+      </label>
+      <label>
+        <input type="radio" name="permission_level" value="YELLOW">
+        <span class="dotyellow"></span>
+      </label>
+      <label>
+        <input type="radio" name="permission_level" value="GREEN">
+        <span class="dotgreen"></span>
+      </label>
+    </fieldset>
+  
+    <input type="text" id="license_title" name="license_title" placeholder="License title.." >
+    <input type="text" id="release_title" name="release_title" placeholder="Release title..">
+    <button type = "submit">Search</button>
+  </form>
+
+  {% for license in licenses %}
+      <article class="media content-section">
+        <div class="media-body">
+          <a class="mr-2" href="{% url 'license-details' license %}">{{ license }}</a>
+          Permission Level: 
+          {%if license.permission_level_license == 2 %}
+          <span class="dotgreen"></span>
+          {% endif %}
+          {%if license.permission_level_license == 1 %}
+          <span class="dotyellow"></span>
+          {% endif %}
+          {%if license.permission_level_license == 0 %}
+          <span class="dotred"></span>
+          {% endif %}
+        </div>
+      </article>
+  {% endfor %}
+{% endblock content %}

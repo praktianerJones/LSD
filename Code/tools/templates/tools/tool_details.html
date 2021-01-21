@@ -1,0 +1,96 @@
+<!--SPDX-License-Identifier: BSD-3-Clause-->
+<!--
+tool_details.html
+
+(C) Copyright 2020 Friedrich Luetze GmbH, S. Hentges <lsd@luetze.de>
+-->
+{% extends "lsd/base.html" %}
+{% block content %}
+  <article class="media content-section">
+    <div class="media-body">
+      <div class="article-metadata">
+        <h2>{{ tool.title }}</h2>
+      </div>
+      <table class="table table-striped">
+        <tr>
+          <th scope="row">Description:</th>
+          <td>{{ tool.description }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Version:</th>
+          <td>{{ tool.version }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Usage Status:</th>
+          <td>
+              {% if tool.usage_status == 'l' %}
+              <p style="color:#FF0000">{{ tool.get_usage_status_display }}</p>
+              {% elif tool.usage_status == 'a' %}
+              <p style="color:#00FF00">{{ tool.get_usage_status_display }}</p>
+              {% endif %}
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Release Status:</th>
+          <td>{{ tool.get_release_status_display }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Classification:</th>
+          <td>{{ tool.get_classification_display }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Responsible:</th>
+          <td>{{ tool.responsible_user }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Proxy:</th>
+          <td>{{ tool.proxy_user }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Comment:</th>
+          <td>{{ tool.comment }}</td>
+        </tr>
+        <tr>
+          <th scope="row">System Requirements:</th>
+          <td>{{ tool.system_requirements }}</td>
+        </tr>
+        <tr>
+          <th scope="row">License Model:</th>
+          <td>{{ tool.license_model }}</td>
+        </tr>
+        <tr>
+          <th scope="row">License Host:</th>
+          <td>{{ tool.license_host_path }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Specification:</th>
+          <td>{{ tool.specification_path }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Manual:</th>
+          <td>{{ tool.manual_path }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Proof Of Compliance:</th>
+          <td>{{ tool.proof_of_compliance_path }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Characterization:</th>
+          <td>{{ tool.characterization_path }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Used For Release:</th>	
+            <td>
+              {% for release in tool.releases.all %}
+                {{ release.title }}, Version: {{ release.version_string }} </br>
+              {% endfor %}
+            </td>
+        </tr>
+        <tr>
+          <th scope="row">Date:</th>
+          <td>{{ tool.date_posted|date:"Y-m-d" }} {{ tool.date_posted|time:"H:i" }}</td>
+        </tr>
+      </table>
+    </div>
+  </article>
+{% endblock content %}

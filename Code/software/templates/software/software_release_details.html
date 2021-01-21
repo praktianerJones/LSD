@@ -1,0 +1,145 @@
+<!--SPDX-License-Identifier: BSD-3-Clause-->
+<!--
+software_release_details.html
+
+(C) Copyright 2020 Friedrich Luetze GmbH, S. Strobel, S. Hentges, J. Luelsdorf <lsd@luetze.de>
+
+-->
+{% extends "lsd/base.html" %}
+{% block content %}
+  <article class="media content-section">
+    <div class="media-body">
+      <div class="article-metadata">
+        <h2>{{ release.title }}</h2>
+      </div>
+      <table class="table table-striped">
+        <tr>
+          <th scope="row">Version:</th>
+          <td>{{ release.version_string }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Date:</th>
+          <td>{{ release.date|date:"Y-m-d" }} {{ release.date|time:"H:i" }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Software:</th>
+          <td><a href="{% url 'lsd-home' %}{{ release.bin_path }}">download Software</a></td>
+        </tr>
+        <tr>
+          <th scope="row">Documentation:</th>
+          <td><a href="{% url 'lsd-home' %}{{ release.doc_path_html }}">show doc</a></td>
+        </tr>
+        <tr>
+          <th scope="row">Status:</th>
+          <td>{{ release.get_status_display }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Responsible:</th>
+          <td>{{ release.responsible_user }}</td>
+        </tr>
+        <tr>
+          <th scope="row">SIL Level:</th>
+          <td>{{ release.get_sil_level_display }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Developer:</th>
+          <td>{{ release.developer }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Tester:</th>
+          <td>{{ release.tester }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Verifier:</th>
+          <td>{{ release.verifier }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Software Type:</th>
+          <td>{{ release.get_software_type_display }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Process version:</th>
+          <td>
+            {{ release.process_version.version_string }}
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Tools Used:</th>
+          <td>
+            {% for tool in release.linked_tools.all %}
+              {{ tool.title }}, Version: {{ tool.version }} </br>
+            {% endfor %}
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Products:</th>
+          <td>
+            {% for product in release.releases.all %}
+              {{ product.title }}, Version: {{ product.article_number}} </br>
+            {% endfor %}
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Used licenses:</th>
+          <td>
+            {% for license in release.linked_licenses.all %}
+              <a href="{% url 'license-details' license.title %}">{{license.title}}</a></br>
+            {% endfor %}
+            </br>
+              <a href="{% url 'add_license_to_release' release.title release.version_string %}" >Add a new License</a>
+          </td>
+        </tr>
+        <tr>
+        <table class="table table-striped">
+          <th scope ="row">Used Packages:</th>
+
+          <tr>
+          <td><b>Packagename:</b></td>
+          <td><b>Packageversion:</b></td>
+          <td><b>Used License of Package: </b></td>
+          <td><b>Type of Package: </b></td>
+          </tr>
+          {%for package in release.linked_packages.all %}
+          <tr>
+          <td>
+            {{package.package_name}}
+          </td>
+          <td>
+            {{package.package_version}}
+          </td>
+          <td>
+            <a href="{%url 'license-details' package.license_used.title%}">{{package.license_used}}</a>
+          </td>
+          <td>
+            {%if package.usage == 'd' %}
+            dynamic
+            {%endif%}
+            {%if package.usage == 's' %}
+            static
+            {%endif%}
+            {%if package.usage == 'r' %}
+            rootfs
+            {%endif%}
+            {%if package.usage == 'u' %}
+            unkown
+            {%endif%}
+          </td>
+          </tr>
+          {% endfor %}
+        </tr>
+      </table>
+      </table>
+      {% if user.is_authenticated %}
+        {% if release.status == 'd' %}
+          <a href="{{ release.version_string }}/release">
+            <button type="button" class="btn btn-primary">Release</button>
+          </a>
+        {% elif release.status == "r" %}
+          <a href="{{ release.version_string }}/withdraw">
+            <button type="button" class="btn btn-primary">Withdraw</button>
+          </a>
+        {% endif %}
+      {% endif %}
+    </div>
+  </article>
+{% endblock content %}

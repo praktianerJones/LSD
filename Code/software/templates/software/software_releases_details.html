@@ -1,0 +1,87 @@
+<!--SPDX-License-Identifier: BSD-3-Clause-->
+<!--
+software_releases_details.html
+
+(C) Copyright 2020 Friedrich Luetze GmbH, S. Strobel, S. Hentges, J. Luelsdorf <lsd@luetze.de>
+
+-->
+{% extends "lsd/base.html" %}
+{% block content %}
+  <article class="media content-section">
+    <div class="media-body">
+  {% for release in releases %}
+      <div class="article-metadata">
+        <h2>{{ release.title }}</h2>
+      </div>
+      <table class="table table-striped">
+        <tr>
+          <th scope="row">Version:</th>
+          <td><a href="{{ release.get_url_details }}">{{ release.version_string }}</a></td>
+        </tr>
+        <tr>
+          <th scope="row">Date:</th>
+          <td>{{ release.date|date:"Y-m-d" }} {{ release.date|time:"H:i" }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Software:</th>
+          <td><a href="{% url 'lsd-home' %}{{ release.bin_path }}">download Software</a></td>
+        </tr>
+        <tr>
+          <th scope="row">Documentation:</th>
+          <td><a href="{% url 'lsd-home' %}{{ release.doc_path_html }}">show doc</a></td>
+        </tr>
+        <tr>
+          <th scope="row">Status:</th>
+          <td>{{ release.get_status_display }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Responsible:</th>
+          <td>{{ release.responsible_user }}</td>
+        </tr>
+        <tr>
+          <th scope="row">SIL Level:</th>
+          <td>{{ release.get_sil_level_display }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Developer:</th>
+          <td>{{ release.developer }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Tester:</th>
+          <td>{{ release.tester }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Verifier:</th>
+          <td>{{ release.verifier }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Software Type:</th>
+          <td>{{ release.get_software_type_display }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Process version:</th>
+          <td>
+            {{ release.process_version.version_string }}
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Tools Used:</th>
+          <td>
+            {% for tool in release.linked_tools.all %}
+              {{ tool.title }}, Version: {{ tool.version }} </br>
+            {% endfor %}
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">Products:</th>
+          <td>
+            {% for product in release.releases.all %}
+              {{ product.title }}, Version: {{ product.article_number}} </br>
+            {% endfor %}
+          </td>
+        </tr>
+      </table>
+    {% endfor %}
+    </div>
+  </article>
+{% endblock content %}

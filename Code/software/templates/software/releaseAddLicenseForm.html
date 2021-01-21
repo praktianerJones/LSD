@@ -1,0 +1,23 @@
+<!--SPDX-License-Identifier: BSD-3-Clause-->
+<!--
+releaseAddLicenseForm.html
+
+(C) Copyright 2020 Friedrich Luetze GmbH, J. Luelsdorf <lsd@luetze.de>
+
+-->
+{% extends "lsd/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+  <div class="content-section">
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <fieldset class="form-group">
+        <legend class="border-bottom mb-4">Add a new License</legend>
+        {{ form|crispy }}
+      </fieldset>
+      <div class="form-group">
+        <button class="btn btn-outline-info" type="submit">Add License</button>
+      </div>
+    </form>
+  </div>
+{% endblock content %}

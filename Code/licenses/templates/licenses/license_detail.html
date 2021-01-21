@@ -1,0 +1,54 @@
+<!--SPDX-License-Identifier: BSD-3-Clause-->
+<!--
+license_detail.html
+
+(C) Copyright 2020 Friedrich Luetze GmbH, J. Luelsdorf <lsd@luetze.de>
+-->
+{% extends "lsd/base.html"%}
+{% block content %}
+    <article class = "media content-section">
+        <div class="media-body">
+            <div class="article-metadata">
+                <h2>{{ license.title }}</h2>
+            </div>
+            <table class="table table-striped">
+                <tr>
+                    <th scope="row">Permission Level:</th>
+                    {%if license.permission_level_license == 2 %}
+                    <td>GREEN</td>
+                    {% endif %}
+                    {%if license.permission_level_license == 1 %}
+                    <td>YELLOW</td>
+                    {% endif %}
+                    {%if license.permission_level_license == 0 %}
+                    <td>RED</td>
+                    {% endif %}
+
+                </tr>
+                <tr>
+                    <th scope = "row">Annotation:</th>
+                    <td>{{license.annotation}}</td>
+                </tr>
+                <tr>
+                    <th scope = "row">Request User:</th>
+                    <td>{{license.request_User}}</td>
+                </tr>
+                <tr>
+                    <th scope = "row">Original Text:</th>
+                    <td>
+                    <a class="mr-2" href="{% url 'original-license' license.title %}">View originalText</a>
+                    <a class="mr-2" href="{% url 'license-download' license.title %}">Download Text</a>
+                </tr>
+                <tr>
+                    <th scope = "row">Releases which use the license:</th>
+                    <td>
+                    {%for release in releases_which_use_license %}
+                        <a class="mr-2" href="{% url 'software-detail-version' software_name=release.title software_version=release.version_string %}">{{ release.title }}</a></br>
+                    {%endfor%}
+                </tr>
+            </table>
+        </div>
+      
+    </article>
+
+{% endblock content %}

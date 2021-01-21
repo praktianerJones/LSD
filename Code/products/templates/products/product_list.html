@@ -1,0 +1,22 @@
+<!--SPDX-License-Identifier: BSD-3-Clause-->
+<!--
+product_list.html
+
+(C) Copyright 2020 Friedrich Luetze GmbH, S. Strobel, S. Hentges, J. Luelsdorf <lsd@luetze.de>
+
+-->
+{% extends "lsd/base.html" %}
+{% block content %}
+    {% for product in products %}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="{%url 'product-details' product.article_number %}">Artikelnummer: {{ product.article_number }}</a></br>
+              Produkt: {{ product.title }}</br></br>
+              <b> Beschreibung:</b></br>
+              {{ product.article_description}}
+            </div>
+          </div>
+        </article>
+    {% endfor %}
+{% endblock content %}
