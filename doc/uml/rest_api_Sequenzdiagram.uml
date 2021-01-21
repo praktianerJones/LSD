@@ -1,0 +1,10 @@
+@startuml
+actor LBS
+boundary LSD_restApi
+database LSD_Database
+
+LBS <- LSD_restApi : product_latest:GET
+LSD_restApi <- LSD_Database : Query for all objects sorted by article_number
+LSD_Database <- LSD_restApi : list of products
+LSD_restApi <- LBS : list of products
+@enduml
