@@ -13,19 +13,17 @@ We use the LSD as a filling system. Through the Web and RestApi Interface integr
 We welcome contributors, please inform yourself about our [code of conduct](https://github.com/praktianerJones/LSD/blob/main/CODE_OF_CONDUCT.md) .
 
 This Repo is especially interessting for people and companies who wants to develop a continous integration system used by companies who have to fulfill certain norms. 
-When you want to get started please have a look on our (how to install)[https://github.com/praktianerJones/LSD/blob/main/How_To_Install.md] for more information about the LSD, please visit our wiki. 
+When you want to get started please have a look on our [how to install](https://github.com/praktianerJones/LSD/blob/main/How_To_Install.md) for more information about the LSD, please visit our wiki. 
 
 ### What Apps are implemented in the LSD?
 
-1. LSD-App
+1. The base app
 
-   The LSD App serves as a base-app. Every other app uses the base-app’s functions. Within the LSD app a base template is integrated, which sets the view of the whole website. 
-The rest of the templates are nested into a block of a base template. No data is saved through the LSD app. The LSD app manages base functions like the authentica-tion 
-administration of the system, which is provided by Django. Django’s administration systems allow an admin to delete, create, update and view table entries.  
+   Within the base app the general settings for the system are set. It defines the look of the other apps through a CSS file and a base template, which should be imported in        other apps. Every app that should be available through their urls.py files must be included in the base files urls.py file.
 
 2. REST_API-App
 
-   The REST_API-App is the gateway to the LBS. It communicates through HTTP requests and responses. It allows the LBS to get products and POST or GET releases. No data is saved   
+   The REST_API-App is the gateway to the LBS. It communicates through HTTP requests and responses. It allows the LBS to get products and POST or GET releases. No data is saved 
    within the REST_API-App. 
    
 3. User-App
@@ -33,25 +31,21 @@ administration of the system, which is provided by Django. Django’s administra
    The LSD provides sensitive functions and information, the user app’s main task is to limit access to certain pages. The user app is provided by Django and has interfaces to 
    most apps. Beside its main task, the user app allows the system to distribute responsibilities of other apps (e.g. being creator of a model instance).  
    
-4. Software-App
+4. The software app
 
-   The Software-App represents the used software which is developed. The App has a table release, which represents the software in a certain release state with a version number. 
-   Release interacts with the table user. Every release has several conditions for users, these are responsible for different tasks (developing, testing, verifying and being 
-   responsible).  
+   The software app represents active or inactive software repositories developed through the Friedrich Lütze GmbH. A software can exist multiple times in different versions,      these versions are called releases. Every software release has a license and multiple users, which fulfill different roles (e.g. creator, maintainer etc.).
    
 5. Tool-App
 
-   The Tool-App represents the tools used by software and hardware developers. They relate to the class release of the software-app. One software can use several tools.  
-   
-6. Products-App
+   The tools app manages the tools which are used by hardware or software developers. They are connected to the software app. One software can use multiple tools.
 
-   The Products-App represents the finished product. Every product is linked to the soft-ware-release it used for development. A product can be part of a family, which is a 
-   cluster of product groups.
+6. The products app
+
+   The software app represents active or inactive software repositories developed through the Friedrich Lütze GmbH. A software can exist multiple times in different versions,      these versions are called releases. Every software release has a license and multiple users, which fulfill different roles (e.g. creator, maintainer etc.).
    
 7. Package-App
 
-   The Package-App represents the packages which are used from software releases. They distinguish themselves from releases, because they can be third-party software. The  
-   Package-App is used mostly by the LBS. The LBS must check if all used packages by a release are within a legal usability.
+   The package app is responsible to represent software build from multiple modules. Every package has a license and every software can have multiple packages.
    
 
 8. License-App
@@ -60,8 +54,11 @@ administration of the system, which is provided by Django. Django’s administra
    must be clear which license is used through a foreign key attribute, which sets the license which is used. The permission level of a license is represented by a “traffic 
    light system”, which indicates if the usage is recommended (GREEN), the usage is not recommended (YELLOW) or the usage is forbidden (RED). If a user has the right 
    permissions, they can upload a new license. Due to legal issues a license must be accepted through a user in the User-Group “Lawyer”. The modules section and paragraph are 
-   implemented for fur-ther usage.  
+   implemented for further usage.  
 
+9. The va app
+
+   The acronym va stands for “Verfahrensanweisung”. Through the va app the internal work-ing instructions are described. 
 
 ### About the company behind the LSD
 The LSD is developed and maintained through the Friedrich Lütze GmbH. The Friedrich Lütze GmbH works in the fields transportation and automation, with the specifications cable, cabinet, connectivity and control. 
