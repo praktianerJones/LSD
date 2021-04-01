@@ -45,7 +45,7 @@ try:
 
 # if the config file is not found default to test settings
 except (IOError, KeyError) as exception:
-    LSD_SECRET_KEY = "8(_8$l#qc7-s$%ea@=h3e1-ol#)4)q(wxn==ruyj_t75sec=w$"
+    LSD_SECRET_KEY = ""
     LSD_DB_PASS = ""
     LSD_LDAP_USER = ""
     LSD_LDAP_PASS = ""
