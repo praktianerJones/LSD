@@ -1,19 +1,19 @@
 # LSD 
 ### Introduction 
-Documentation tool for metainformation, developed to fulfill certain transportation norms
+Delivery and management tool for self-developed software of a company. Developed amongst others to fulfill certain transportation norms.
 
-LSD stands for Luetze Software Delievery. It was build with the python based Webframework Django. 
-The LSD consists of different apps, which change the functionality. 
+LSD stands for Luetze Software Delivery. It is build with the python based Webframework Django. 
+The LSD consists of different django-apps, each has a certain functionality.
 Apps can be activated and deactivated. 
 
 ### Usage of the LSD
-We use the LSD as a filling system. Through the Web and RestApi Interface integrated in the LSD, our internal Buildtool saves information of software in the LSD. 
+We use the LSD as a software-management and delivery system. Through the Web and RestApi-Interface integrated in the LSD, our internal Buildtool saves information of software in the LSD (e.g. output-files like .hex-files, . 
 
-### How can you contribute? 
+### How can you contribute?
 We welcome contributors, please inform yourself about our [code of conduct](https://github.com/praktianerJones/LSD/blob/main/CODE_OF_CONDUCT.md) .
 
-This Repo is especially interessting for people and companies who wants to develop a continous integration system used by companies who have to fulfill certain norms. 
-When you want to get started please have a look on our [how to install](https://github.com/praktianerJones/LSD/blob/main/How_To_Install.md) for more information about the LSD, please visit our wiki. 
+This Repo is especially interesting for people and companies who wants to develop a continous integration system to fulfill certain norms.
+To get started please have a look on our [how to install](https://github.com/praktianerJones/LSD/blob/main/How_To_Install.md) for more information about the LSD, please visit our wiki. 
 
 ### What Apps are implemented in the LSD?
 
@@ -61,8 +61,8 @@ When you want to get started please have a look on our [how to install](https://
    The acronym va stands for “Verfahrensanweisung”. Through the va app the internal work-ing instructions are described. 
 
 ### About the company behind the LSD
-The LSD is developed and maintained through the Friedrich Lütze GmbH. The Friedrich Lütze GmbH works in the fields transportation and automation, with the specifications cable, cabinet, connectivity and control. 
-[Please visit our Website for more information about the Friedrich Lütze GmbH.](https://www.luetze.com/de-de/)
+The LSD is developed and maintained through the Friedrich Lütze GmbH. The Friedrich Lütze GmbH works in the fields transportation and automation, with the product-fields cable, cabinet, connectivity and control. 
+[Please visit our Website for more information about the Friedrich Lütze GmbH.](https://www.luetze.com)
 
 ### License
 The LSD through the 3-Clause-BSD, a copy of this license is provided in this Repo. 
